@@ -8,11 +8,18 @@ Author: Luca Ruggeri
 
 function mon_plugin_shortcode() {
     // Commencez à construire le contenu du shortcode
-    $shortcode_content = '<div class="sessions-container">';
-
-    // Boucle pour afficher les sessions
+    $shortcode_content = '<div class="session-buttons">';
+    
+    // Boucle pour afficher les boutons de session
     $sessions = array('Session 1', 'Session 2', 'Session 3', 'Session 4', 'Session 5', 'Session 6'); // Liste des sessions
+    foreach ($sessions as $key => $session) {
+        $shortcode_content .= '<button class="session-button" data-session="' . ($key + 1) . '">Session ' . ($key + 1) . '</button>';
+    }
+    $shortcode_content .= '</div>';
 
+    // Ajoutez une div pour le contenu des sessions
+    $shortcode_content .= '<div class="sessions-container">';
+    
     foreach ($sessions as $session) {
         // Récupération des articles de la catégorie "Cours" et de la session actuelle
         $args = array(
@@ -48,13 +55,6 @@ function mon_plugin_shortcode() {
     }
 
     // Terminez la div des sessions
-    $shortcode_content .= '</div>';
-
-    // Ajoutez des boutons pour basculer entre les sessions
-    $shortcode_content .= '<div class="session-buttons">';
-    foreach ($sessions as $key => $session) {
-        $shortcode_content .= '<button class="session-button" data-session="' . ($key + 1) . '">Session ' . ($key + 1) . '</button>';
-    }
     $shortcode_content .= '</div>';
 
     // Retournez le contenu du shortcode
