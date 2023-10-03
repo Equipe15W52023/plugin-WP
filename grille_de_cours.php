@@ -9,7 +9,6 @@ Author: Luca Ruggeri
 function mon_plugin_shortcode() {
     // Commencez à construire le contenu du shortcode
     $shortcode_content = '<div class="session-buttons">';
-    
     // Boucle pour afficher les boutons de session
     $sessions = array('Session 1', 'Session 2', 'Session 3', 'Session 4', 'Session 5', 'Session 6'); // Liste des sessions
     foreach ($sessions as $key => $session) {
@@ -22,12 +21,14 @@ function mon_plugin_shortcode() {
     
     foreach ($sessions as $session) {
         // Récupération des articles de la catégorie "Cours" et de la session actuelle
+        $sessionCategory = $session; // Utilisez une variable distincte
         $args = array(
             'post_type' => 'post',
             'category_name' => 'cours', // Catégorie "Cours"
             'posts_per_page' => -1,
-            'category_name' => $session, // Catégorie de session actuelle
+            'category_name' => $sessionCategory, // Utilisez la variable distincte
         );
+    
 
         $query = new WP_Query($args);
 
