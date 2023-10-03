@@ -2,9 +2,10 @@
 /*
 Plugin Name: Grille de Cours
 Description: Un plugin pour afficher des articles de la catégorie "Cours".
-Version: 1.0
+Version: 1.2
 Author: Luca Ruggeri
 */
+error_reporting(0);
 
 function mon_plugin_shortcode() {
     // Commencez à construire le contenu du shortcode
@@ -62,38 +63,32 @@ function mon_plugin_shortcode() {
     return $shortcode_content;
 }
 
+
+/*
+ filemtime() // retourne en milliseconde le temps de la dernière sauvegarde
+plugin_dir_path() // retourne le chemin du répertoire du plugin
+__FILE__ // une constante contenant le chemin du fichier en train de s'exécuter
+wp_enqueue_style() // Intègre le link:css dans la page
+wp_enqueue_script() // intègre le script dans la page
+wp_enqueue_scripts // le hook qui permettra d'enfiler le css et le script
+*/
+
+function enfiler_script_css()
+{
+   $version_css =  filemtime(plugin_dir_path(__FILE__) . 'style.scss');
+   $version_js = filemtime(plugin_dir_path(__FILE__) . 'js/grille_de_cours.js');
+   wp_enqueue_style('style_carrousel',
+        plugin_dir_url(__FILE__) . 'style.scss',
+        array(),
+        $version_css
+);
+    wp_enqueue_script('grille_de_cours.js',
+            plugin_dir_url(__FILE__) . 'js/grille_de_cours.js',
+            array(),
+            $version_js,
+            true
+    );
+
+}
+add_action('wp_enqueue_scripts', 'enfiler_script_css' );
 add_shortcode('mon_shortcode', 'mon_plugin_shortcode');
-?>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Sélectionnez les éléments nécessaires
-    var sessionButtons = document.querySelectorAll('.session-button');
-    var sessions = document.querySelectorAll('.session');
-
-    // Fonction pour masquer toutes les sessions
-    function hideAllSessions() {
-        sessions.forEach(function (session) {
-            session.style.display = 'none';
-        });
-    }
-
-    // Par défaut, masquez toutes les sessions sauf la première
-    hideAllSessions();
-    sessions[0].style.display = 'block';
-
-    // Ajoutez des gestionnaires d'événements aux boutons
-    sessionButtons.forEach(function (button) {
-        button.addEventListener('click', function () {
-            // Obtenez le numéro de session à afficher à partir de l'attribut "data-session"
-            var sessionNumber = button.getAttribute('data-session');
-
-            // Masquez toutes les sessions
-            hideAllSessions();
-
-            // Affichez la session correspondante
-            var sessionToShow = document.querySelector('.session:nth-child(' + sessionNumber + ')');
-            sessionToShow.style.display = 'block';
-        });
-    });
-});
-</script>
