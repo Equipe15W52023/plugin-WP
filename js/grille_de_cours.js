@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Par défaut, masquez toutes les sessions sauf la première
     hideAllSessions();
-    sessions[0].style.display = 'block';
+    sessions[0].style.display = 'flex';
 
     // Ajoutez des gestionnaires d'événements aux boutons
     sessionButtons.forEach(function (button) {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Affichez la session correspondante
             var sessionToShow = document.querySelector('.session:nth-child(' + sessionNumber + ')');
-            sessionToShow.style.display = 'block';
+            sessionToShow.style.display = 'flex';
         });
     });
 });
