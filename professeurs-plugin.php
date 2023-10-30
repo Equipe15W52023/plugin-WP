@@ -16,6 +16,8 @@ function afficher_articles_prof() {
     $professeurs = new WP_Query($args);
 
     if ($professeurs->have_posts()) {
+        echo '<div class="Section-prof">';
+
         while ($professeurs->have_posts()) {
             $professeurs->the_post();
 
@@ -32,6 +34,8 @@ function afficher_articles_prof() {
     } else {
         echo 'Aucun professeur trouvé.';
     }
+    echo '</div>';
+
 }
 
 // Créez un shortcode pour afficher la liste des articles de la catégorie "Prof"
