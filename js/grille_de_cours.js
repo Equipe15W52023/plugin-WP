@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
     hideAllSessions();
     sessions[0].style.display = 'flex';
 
+    // Par défaut, afficher le bouton de la session 1 comme séléctionné
+    sessionButtons[0].classList.add('selection');
+
+
     // Ajoutez des gestionnaires d'événements aux boutons
     sessionButtons.forEach(function (button) {
         button.addEventListener('click', function () {
@@ -26,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Affichez la session correspondante
             var sessionToShow = document.querySelector('.session:nth-child(' + sessionNumber + ')');
             sessionToShow.style.display = 'flex';
+
+            // Changer le style du bouton séléctionné
+            button.classList.toggle("selection");
         });
     });
 });
