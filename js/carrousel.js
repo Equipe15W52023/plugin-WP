@@ -5,8 +5,8 @@
    //let carrousel__x = document.querySelector('.carrousel__x')
    let carrousel__figure = document.querySelector('.carrousel__figure')
    let carrousel__form = document.querySelector('.carrousel__form')
-   let carrousel__gauche = document.querySelector('.carrousel__gauche')
-   let carrousel__droite = document.querySelector('.carrousel__droite')
+   let carrousel__gauche = document.querySelector('.carrousel__gauche')//!!
+   let carrousel__droite = document.querySelector('.carrousel__droite')//!!
     let video_du_projet = document.querySelector('.video_projet')
    //console.log(carrousel__form.tagName) //conteneur de radio-boutons
 
