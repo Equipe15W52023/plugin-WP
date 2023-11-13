@@ -40,12 +40,17 @@ function mon_plugin_shortcode() {
             while ($query->have_posts()) : $query->the_post();
                 // Obtenez le titre de l'article
                 $article_title = get_the_title();
-
+                $article_content = get_the_content();
 
 
                 // Ajoutez chaque article dans une div nommée "cours"
-                $shortcode_content .= '<div class="cours">';
+                $shortcode_content .= '<div class="cours cours-ferme">';
                 $shortcode_content .= '<h3>' . $article_title . '</h3>';
+                $shortcode_content .= '<div class="texte-cours">';
+                $shortcode_content .= '<span class="bouton-fermer">' . '</span>';
+                $shortcode_content .= '<h3>' . $article_title . '</h3>';
+                $shortcode_content .= '<p>' . $article_content . '</p>';
+                $shortcode_content .= '</div>';
                 $shortcode_content .= '</div>';
             endwhile;
             $shortcode_content .= '</div>';
