@@ -23,22 +23,28 @@ function creation_carrousel() {
             while ($query->have_posts()) : $query->the_post();
 
                 $projet_title = get_the_title();
-                $projet_video = get_the_content();
+                $projet_content = get_the_content();
+                $projet_video = get_post_gallery();
 
-                $leCarrousel .= '<div class="un_projet">';
-                $leCarrousel .= '<h3>' . $projet_title . '</h3>';
-                $leCarrousel .= '<div class="la_video">' . $projet_video . '</div>';
-                $leCarrousel .= '</div>';
-            endwhile;
+                    $leCarrousel .= '<div class="video_projet">';
+                    $leCarrousel .= '<div class="la_video">' . $projet_video . '</div>';
+                    $leCarrousel .= '</div>';
+
+                    $leCarrousel .= '<div class="info_projet">';
+                    $leCarrousel .= '<h3 class="titre_projet">' . $projet_title . '</h3>';
+                    //$leCarrousel .= '<p class="descritpion_projet">' . $projet_content . '</p>';
+                    
+
+                    $leCarrousel .= '<div class="carrousel__bouton">';
+                    $leCarrousel .= '<button class="carrousel__gauche"><--</button>';
+                    $leCarrousel .= '<button class="carrousel__droite">--></button>';
+                    $leCarrousel .= '</div>';
+                    $leCarrousel .= '</div>';
+
             $leCarrousel .= '</div>';
-        }
 
-        $leCarrousel .= '<div class="carrousel__bouton">';
-        $leCarrousel .= '<button class="carrousel__gauche"><--';
-        $leCarrousel .= '</button>';
-        $leCarrousel .= '<button class="carrousel__droite">-->';
-        $leCarrousel .= '</button>';
-        $leCarrousel .= '</div>';
+            endwhile;    
+        }
 
     $leCarrousel .= '</div>';
 
