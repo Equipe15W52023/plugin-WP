@@ -36,8 +36,8 @@ function creation_carrousel() {
                     
 
                     $leCarrousel .= '<div class="carrousel__bouton">';
-                    $leCarrousel .= '<button class="carrousel__gauche"><--</button>';
-                    $leCarrousel .= '<button class="carrousel__droite">--></button>';
+                    $leCarrousel .= '<button id="carrousel__gauche"><--</button>';
+                    $leCarrousel .= '<button id="carrousel__droite">--></button>';
                     $leCarrousel .= '</div>';
                     $leCarrousel .= '</div>';
 
