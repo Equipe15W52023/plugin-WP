@@ -13,7 +13,10 @@ function mon_plugin_shortcode() {
     // Boucle pour afficher les boutons de session
     $sessions = array('Session 1', 'Session 2', 'Session 3', 'Session 4', 'Session 5', 'Session 6'); // Liste des sessions
     foreach ($sessions as $key => $session) {
-        $shortcode_content .= '<button class="session-button" data-session="' . ($key + 1) . '">Session ' . ($key + 1) . '</button>';
+        $shortcode_content .= '<button class="session-button" data-session="' . ($key + 1) . '">';
+        $shortcode_content .= '<span class="nom-session-button bouton-ferme" data-session="' . ($key + 1) . '">Session ' . '</span>';
+        $shortcode_content .= '<span class="num-session-button" data-session="' . ($key + 1) . '">' . ($key + 1) . '</span>';
+        $shortcode_content .= '</button>';
     }
     $shortcode_content .= '</div>';
 
@@ -47,7 +50,7 @@ function mon_plugin_shortcode() {
                 $shortcode_content .= '<div class="cours cours-ferme">';
                 $shortcode_content .= '<h3>' . $article_title . '</h3>';
                 $shortcode_content .= '<div class="texte-cours">';
-                $shortcode_content .= '<span class="bouton-fermer">' . '</span>';
+                $shortcode_content .= '<span class="bouton-x">' . '</span>';
                 $shortcode_content .= '<h3>' . $article_title . '</h3>';
                 $shortcode_content .= '<p>' . $article_content . '</p>';
                 $shortcode_content .= '</div>';

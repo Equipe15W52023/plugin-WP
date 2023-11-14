@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Sélectionnez les éléments nécessaires
     var sessionButtons = document.querySelectorAll('.session-button');
+    var titresSessionButtons = document.querySelectorAll('.nom-session-button');
     var sessions = document.querySelectorAll('.session');
     var sessionCours = document.querySelectorAll('.cours');
-    var buttonsFermer = document.querySelectorAll('.bouton-fermer');
+    // var buttonsFermer = document.querySelectorAll('.bouton-x');
 
     // Fonction pour masquer toutes les sessions
     function hideAllSessions() {
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // ÉLÉMENTS PAR DÉFAUT
     // Par défaut, masquez toutes les sessions sauf la première
     hideAllSessions();
     sessions[0].style.display = 'flex';
@@ -19,7 +21,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Par défaut, afficher le bouton de la session 1 comme séléctionné
     sessionButtons[0].classList.add('selection');
 
+    // Enlever l'affichage des titre 'session' des boutons lorsque'ils ne sont pas séléctionné
+    // Par défaut, afficher le titre complet du bouton de la session 1
+    titresSessionButtons[0].classList.add('bouton-ouvert');
 
+
+    // ÉCOUTEURS D'ÉVÉNEMENTS
     // Ajoutez des gestionnaires d'événements aux boutons
     sessionButtons.forEach(function (button) {
         button.addEventListener('click', function () {
@@ -36,27 +43,38 @@ document.addEventListener('DOMContentLoaded', function () {
             // Changez le style du bouton séléctionné
             desactiverSelection();
             button.classList.add('selection');
+
+            // Afficher le titre complet du bouton avec le mot 'session' et désactiver le précédent
+            // Variable local pour séléctionner le titre du bouton séléctionné
+            var titreSession = document.querySelector('.selection .nom-session-button');
+            desactiverTitreBouton();
+            titreSession.classList.add('bouton-ouvert');
         });
     })
 
-    // Ajouter des gestionnaires d'événements aux cours
+    // Ajouter des gestionnaires d'événements aux cours pour afficher le contenu
     sessionCours.forEach(function (cours) {
-        cours.addEventListener('click', function () {
-            // Faire apparaitre le contenu des cours en changeant les classes de l'élément
-            desactiverCours();
-            cours.classList.add('cours-selection');
-            cours.classList.remove('cours-ferme');
+        cours.addEventListener('mousedown', function () {
+            // Si le cours n'est pas affiché, on l'affiche 
+            if(!cours.classList.contains('cours-selection')) {
+                // Faire apparaitre le contenu des cours en changeant les classes de l'élément
+                desactiverCours();
+                cours.classList.add('cours-selection');
+                cours.classList.remove('cours-ferme');
+                console.log('O > O');
+            } else { // si le cours est affiché
+                // Enlever l'affichage du contenu du cours séléctionné
+                var boutonX = document.querySelector('.cours-selection .bouton-x');
+                boutonX.addEventListener('click', function () {
+                    console.log('X > X');
+                    desactiverCours();
+                });
+            }
         });
     });
 
-    // Enlever l'affichage du contenu séléctionné
-    buttonsFermer.forEach(function(boutonX) {
-        boutonX.addEventListener('click', function () {
-            console.log('X > X');
-            desactiverCours();
-        });
-    });
 
+    // FONCTIONS
     // Fonction pour enlever la classe 'selection' des boutons sessions non séléctionné
     function desactiverSelection() {
         sessionButtons.forEach(function (button) {
@@ -69,6 +87,14 @@ document.addEventListener('DOMContentLoaded', function () {
         sessionCours.forEach(function (cours) {
             cours.classList.add('cours-ferme');
             cours.classList.remove('cours-selection');
+        });
+    }
+
+    // Fonction pour enlever la classe 'bouton-ouvert' des boutons non séléctionné
+    function desactiverTitreBouton() {
+        titresSessionButtons.forEach(function (titre) {
+            titre.classList.add('bouton-ferme');
+            titre.classList.remove('bouton-ouvert');
         });
     }
 });
