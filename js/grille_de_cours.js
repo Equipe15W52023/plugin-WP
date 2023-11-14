@@ -49,6 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var titreSession = document.querySelector('.selection .nom-session-button');
             desactiverTitreBouton();
             titreSession.classList.add('bouton-ouvert');
+
+            // Fermé les cours qui pourrais rester affiché en changeant de session
+            desactiverCours();
         });
     })
 
