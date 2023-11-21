@@ -25,10 +25,14 @@ function afficher_articles_futur() {
             $futur_contenu = wp_strip_all_tags( get_the_content() );
             // $futur_contenu = get_field('contenu');
             $futur_desc = get_field('description');
+            $futur_img = get_field('image-fond');
+            $futur_bouton = get_field('bouton-plus');
 
             echo '<div class="section-futur section-ferme">';
             echo '<h2>' . esc_html($futur_titre) . '</h2>';
             echo '<p class="desc-futur">' . esc_html($futur_desc) . '</p>';
+            echo '<img class="img-futur" src="' . esc_html($futur_img) . '">';
+            echo '<img class="bouton-plus" src="' . esc_html($futur_bouton) . '">';
             echo '<div class="texte-futur">';
             echo '<span class="bouton-x-futur">' . '</span>';
             echo '<h2>' . esc_html($futur_titre) . '</h2>';
