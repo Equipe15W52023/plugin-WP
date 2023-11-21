@@ -26,10 +26,11 @@ function afficher_articles_futur() {
             // $futur_contenu = get_field('contenu');
             $futur_desc = get_field('description');
 
-            echo '<div class="section-futur">';
+            echo '<div class="section-futur section-ferme">';
             echo '<h2>' . esc_html($futur_titre) . '</h2>';
             echo '<p class="desc-futur">' . esc_html($futur_desc) . '</p>';
             echo '<div class="texte-futur">';
+            echo '<span class="bouton-x-futur">' . '</span>';
             echo '<h2>' . esc_html($futur_titre) . '</h2>';
             echo '<p>' . esc_html($futur_contenu) . '<p>';
             echo '</div>';
@@ -47,4 +48,24 @@ function shortcode_afficher_articles_futur($atts) {
     return $futur_content;
 }
 
+/*
+ filemtime() // retourne en milliseconde le temps de la dernière sauvegarde
+plugin_dir_path() // retourne le chemin du répertoire du plugin
+__FILE__ // une constante contenant le chemin du fichier en train de s'exécuter
+wp_enqueue_style() // Intègre le link:css dans la page
+wp_enqueue_script() // intègre le script dans la page
+wp_enqueue_scripts // le hook qui permettra d'enfiler le css et le script
+*/
+
+function enfiler_script_css_futur()
+{
+   $version_js = filemtime(plugin_dir_path(__FILE__) . 'js/futur.js');
+    wp_enqueue_script('futur.js',
+            plugin_dir_url(__FILE__) . 'js/futur.js',
+            array(),
+            $version_js,
+            true
+    );
+}
+add_action('wp_enqueue_scripts', 'enfiler_script_css_futur' );
 add_shortcode('afficher_futur', 'shortcode_afficher_articles_futur');

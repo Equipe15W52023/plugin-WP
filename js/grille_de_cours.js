@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var titresSessionButtons = document.querySelectorAll('.nom-session-button');
     var sessions = document.querySelectorAll('.session');
     var sessionCours = document.querySelectorAll('.cours');
-    // var buttonsFermer = document.querySelectorAll('.bouton-x');
 
     // Fonction pour masquer toutes les sessions
     function hideAllSessions() {
@@ -64,12 +63,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 desactiverCours();
                 cours.classList.add('cours-selection');
                 cours.classList.remove('cours-ferme');
-                console.log('O > O');
             } else { // si le cours est affiché
                 // Enlever l'affichage du contenu du cours séléctionné
                 var boutonX = document.querySelector('.cours-selection .bouton-x');
                 boutonX.addEventListener('click', function () {
-                    console.log('X > X');
                     desactiverCours();
                 });
             }
