@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Sélectionnez les éléments nécessaires
     var sectionsFutur = document.querySelectorAll('.section-futur');
-    // var boutonsPlus = document.querySelectorAll('.bouton-plus');
 
     // ÉCOUTEURS D'ÉVÉNEMENTS
     // Ajouter des gestionnaires d'événements aux sections 'futur' pour afficher le contenu
