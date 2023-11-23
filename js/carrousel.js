@@ -1,28 +1,28 @@
-let slideIndex = 1;
+let articleIndex = 1;
 
-function showSlides(n) {
+function showArticles(n) {
     let i;
-    let slides = document.getElementsByClassName("tructruc");
+    let articles = document.getElementsByClassName("projet_article");
 
-    if (n > slides.length) {
-        slideIndex = 1;
+    if (n > articles.length) {
+        articleIndex = 1;
     }
 
     if (n < 1) {
-        slideIndex = slides.length;
+        articleIndex = articles.length;
     }
 
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
+    for (i = 0; i < articles.length; i++) {
+        articles[i].style.display = "none";
     }
 
-    slides[slideIndex - 1].style.display = "block";
+    articles[articleIndex - 1].style.display = "block";
 }
 
-function plusSlides(n) {
-    showSlides(slideIndex += n);
+function plusArticles(n) {
+    showArticles(articleIndex += n);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    showSlides(slideIndex);
+    showArticles(articleIndex);
 });
