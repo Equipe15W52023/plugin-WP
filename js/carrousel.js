@@ -1,6 +1,6 @@
 let articleIndex = 1;
 
-function showArticles(n) {
+function carrouselArticles(n) {
     let i;
     let articles = document.getElementsByClassName("projet_article");
 
@@ -20,9 +20,16 @@ function showArticles(n) {
 }
 
 function plusArticles(n) {
-    showArticles(articleIndex += n);
+    carrouselArticles(articleIndex += n);
+}
+
+function animationArticles() {
+    intervalId = setInterval(function () {
+        plusArticles(1);
+    }, 5000);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    showArticles(articleIndex);
+    carrouselArticles(articleIndex);
+    animationArticles();
 });

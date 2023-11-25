@@ -34,8 +34,10 @@ function creation_carrousel($atts) {
                 echo '</div>';
 
                 //titre et description
+                echo '<div class="projet_titre_desc">';
                 echo '<h2>' . get_the_title() . '</h2>';
                 echo '<div>' . get_the_content() . '</div>';
+                echo '</div>';
             echo '</div>';
 
                 //image de fond (miniature)
