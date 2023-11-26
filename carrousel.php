@@ -25,8 +25,6 @@ function creation_carrousel($atts) {
             while ($query->have_posts()) {
             $query->the_post();
 
-            $img_bouton = get_field ('');
-
             echo '<div class="projet_article">';
 
             echo '<div class="projet_info">';
@@ -38,8 +36,8 @@ function creation_carrousel($atts) {
 
                 //titre et description
                 echo '<div class="projet_titre_desc">';
-                echo '<h2>' . get_the_title() . '</h2>';
-                echo '<div>' . get_the_content() . '</div>';
+                echo '<h2 class="test">' . get_the_title() . '</h2>';
+                echo '<p>' . get_the_content() . '</p>';
                 echo '</div>';
             echo '</div>';
 
