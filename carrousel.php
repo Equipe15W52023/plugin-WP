@@ -24,18 +24,21 @@ function creation_carrousel($atts) {
 
             while ($query->have_posts()) {
             $query->the_post();
+
             echo '<div class="projet_article">';
 
             echo '<div class="projet_info">';
                 //les boutons pour changer d'articles
                 echo '<div class="carrousel_bouton">';
-                echo '<button id="bouton_gauche" onclick="plusArticles(-1)">&#8592</button>';
-                echo '<button id="bouton_droit" onclick="plusArticles(1)">&#8594</button>';
+                echo '<button id="bouton_gauche" onclick="plusArticles(-1)"></button>';
+                echo '<button id="bouton_droit" onclick="plusArticles(1)"></button>';
                 echo '</div>';
 
                 //titre et description
-                echo '<h2>' . get_the_title() . '</h2>';
-                echo '<div>' . get_the_content() . '</div>';
+                echo '<div class="projet_titre_desc">';
+                echo '<h2 class="test">' . get_the_title() . '</h2>';
+                echo '<p>' . get_the_content() . '</p>';
+                echo '</div>';
             echo '</div>';
 
                 //image de fond (miniature)
