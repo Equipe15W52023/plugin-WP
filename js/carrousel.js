@@ -31,5 +31,5 @@ function animationArticles() {
 
 document.addEventListener('DOMContentLoaded', function () {
     carrouselArticles(articleIndex);
-    animationArticles();
+    //animationArticles();
 });

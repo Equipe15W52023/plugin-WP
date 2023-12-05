@@ -27,25 +27,28 @@ function creation_carrousel($atts) {
 
             echo '<div class="projet_article">';
 
-            echo '<div class="projet_info">';
-                //les boutons pour changer d'articles
-                echo '<div class="carrousel_bouton">';
+            echo '<div class="bloc_projet">';
+
+            echo '<div class="bouton_image">';
+            //image de fond (miniature)
+            echo '<div class="projet_image">';
+            echo '<div>' . the_post_thumbnail('large') . '</div>';
+            echo '</div>';
+
+            //les boutons pour changer d'articles
+            echo '<div class="carrousel_bouton">';
                 echo '<button id="bouton_gauche" onclick="plusArticles(-1)"></button>';
                 echo '<button id="bouton_droit" onclick="plusArticles(1)"></button>';
                 echo '</div>';
+            echo '</div>';
 
                 //titre et description
                 echo '<div class="projet_titre_desc">';
                 echo '<h2 class="test">' . get_the_title() . '</h2>';
                 echo '<p>' . get_the_content() . '</p>';
                 echo '</div>';
+
             echo '</div>';
-
-                //image de fond (miniature)
-                echo '<div class="projet_image">';
-                echo '<div>' . the_post_thumbnail('medium') . '</div>';
-                echo '</div>';
-
             echo '</div>';
             }
         echo '</div>';
