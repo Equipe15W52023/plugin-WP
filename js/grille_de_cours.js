@@ -61,14 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if(!cours.classList.contains('cours-selection')) {
                 // Faire apparaitre le contenu des cours en changeant les classes de l'élément
                 desactiverCours();
-                cours.classList.add('cours-selection');
-                cours.classList.remove('cours-ferme');
+                cours.classList.toggle('cours-selection');
+                cours.classList.toggle('cours-ferme');
             } else { // si le cours est affiché
                 // Enlever l'affichage du contenu du cours séléctionné
-                var boutonX = document.querySelector('.cours-selection .bouton-x');
-                boutonX.addEventListener('click', function () {
-                    desactiverCours();
-                });
+                cours.classList.toggle('cours-selection');
+                cours.classList.toggle('cours-ferme');
             }
         });
     });
