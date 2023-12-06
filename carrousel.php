@@ -52,6 +52,7 @@ function creation_carrousel($atts) {
             echo '</div>';
             }
         echo '</div>';
+        echo'<div class="vague_carrousel"></div>';
     }
 
     wp_reset_postdata();
