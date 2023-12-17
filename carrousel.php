@@ -32,7 +32,7 @@ function creation_carrousel($atts) {
                 echo '<div class="bouton_image">';
                     //image de fond (miniature)
                     echo '<div class="projet_image">';
-                    echo '<div>' . the_post_thumbnail('large') . '</div>';
+                    echo '<div>' . the_post_thumbnail('full') . '</div>';
                     echo '</div>';
 
                     //les boutons pour changer d'articles
