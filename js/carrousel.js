@@ -14,9 +14,11 @@ function carrouselArticles(n) {
 
     for (i = 0; i < articles.length; i++) {
         articles[i].style.display = "none";
+        articles[i].classList.remove("active");
     }
 
     articles[articleIndex - 1].style.display = "block";
+    articles[articleIndex - 1].classList.add("active");
 }
 
 function plusArticles(n) {
@@ -26,10 +28,10 @@ function plusArticles(n) {
 function animationArticles() {
     intervalId = setInterval(function () {
         plusArticles(1);
-    }, 5000);
+    }, 6000);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     carrouselArticles(articleIndex);
-    //animationArticles();
+    animationArticles();
 });
