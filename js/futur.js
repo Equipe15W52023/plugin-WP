@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Sélectionnez les éléments nécessaires
+    var backgroundClick = document.querySelector('.background-click');
     var sectionsFutur = document.querySelectorAll('.section-futur');   
     var textesFutur = document.querySelectorAll('.texte-futur'); 
       
@@ -18,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 section.classList.toggle('texte-futur-selection');
                 section.classList.toggle('section-ferme');
 
+                // Augmenter le z-index de la div "background-click" pour fermer les sections en cliquant n'importe où
+                if(section.classList.contains('texte-futur-selection')) {
+                    backgroundClick.classList.add('index-plus');
+                } else {
+                    backgroundClick.classList.remove('index-plus');
+                }
+
                 // Appeler l'animation d'affichage
                 textesFutur.forEach(function (texteFutur) {
                     if(texteFutur.classList.contains('agrandissement')) {
@@ -35,6 +43,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 introFutur.classList.toggle('intro-ferme');            
                 introTitreFutur.classList.toggle('intro-ferme');            
             }
+        });
+    });
+
+    // Fermer les sections en cliquant n'importe où
+    sectionsFutur.forEach(function (section) {
+        backgroundClick.addEventListener('mousedown', function (){
+            if(section.classList.contains('texte-futur-selection')) {
+                backgroundClick.classList.add('index-plus');
+            } else {
+                backgroundClick.classList.remove('index-plus');
+            }
+
+            section.classList.add('section-ferme');
+            section.classList.remove('texte-futur-selection');
         });
     });
     
