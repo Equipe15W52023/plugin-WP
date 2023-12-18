@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Sélectionnez les éléments nécessaires
+    var backgroundClick = document.querySelector('.background-click');
     var sessionButtons = document.querySelectorAll('.session-button');
     var titresSessionButtons = document.querySelectorAll('.nom-session-button');
     var sessions = document.querySelectorAll('.session');
     var sessionCours = document.querySelectorAll('.cours');
+    var textesCours = document.querySelectorAll('.texte-cours');
 
     // Fonction pour masquer toutes les sessions
     function hideAllSessions() {
@@ -61,18 +63,47 @@ document.addEventListener('DOMContentLoaded', function () {
             if(!cours.classList.contains('cours-selection')) {
                 // Faire apparaitre le contenu des cours en changeant les classes de l'élément
                 desactiverCours();
-                cours.classList.add('cours-selection');
-                cours.classList.remove('cours-ferme');
+                cours.classList.toggle('cours-selection');
+                cours.classList.toggle('cours-ferme');
+
+                // Augmenter le z-index de la div "background-click" pour fermer les sections en cliquant n'importe où
+                if(cours.classList.contains('cours-selection')) {
+                    backgroundClick.classList.add('index-plus');
+                } else {
+                    backgroundClick.classList.remove('index-plus');
+                }
+
+                // Appeler l'animation d'affichage
+                textesCours.forEach(function (texteCours) {
+                    if(texteCours.classList.contains('agrandissement')) {
+                        texteCours.classList.remove('agrandissement');
+                        texteCours.classList.add('agrandissement');
+                    } else {
+                        texteCours.classList.add('agrandissement');
+                    }
+                });
+
             } else { // si le cours est affiché
                 // Enlever l'affichage du contenu du cours séléctionné
-                var boutonX = document.querySelector('.cours-selection .bouton-x');
-                boutonX.addEventListener('click', function () {
-                    desactiverCours();
-                });
+                cours.classList.toggle('cours-selection');
+                cours.classList.toggle('cours-ferme');
             }
         });
     });
 
+    // Fermer les sections en cliquant n'importe où
+    sessionCours.forEach(function (cours) {
+        backgroundClick.addEventListener('mousedown', function (){
+            if(cours.classList.contains('cours-selection')) {
+                backgroundClick.classList.add('index-plus');
+            } else {
+                backgroundClick.classList.remove('index-plus');
+            }
+
+            cours.classList.add('cours-ferme');
+            cours.classList.remove('cours-selection');
+        });
+    });
 
     // FONCTIONS
     // Fonction pour enlever la classe 'selection' des boutons sessions non séléctionné
