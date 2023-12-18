@@ -100,10 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 backgroundClick.classList.remove('index-plus');
             }
 
-            sessionCours.forEach(function (cours) {
-                cours.classList.add('cours-ferme');
-                cours.classList.remove('cours-selection');
-            });
+            cours.classList.add('cours-ferme');
+            cours.classList.remove('cours-selection');
         });
     });
 
