@@ -22,9 +22,7 @@ function afficher_articles_prof() {
         while ($professeurs->have_posts()) {
                 // Récupérer la valeur de la palette sélectionnée
     $palette_selectionnee = get_field('palette_couleurs') ;
-    if (empty($palette_selectionnee)) {
-        echo 'Erreur : Palette non définie.';
-    }
+
     
 
 
