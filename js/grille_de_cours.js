@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Sélectionnez les éléments nécessaires
+    var backgroundClick = document.querySelector('.background-click');
     var sessionButtons = document.querySelectorAll('.session-button');
     var titresSessionButtons = document.querySelectorAll('.nom-session-button');
     var sessions = document.querySelectorAll('.session');
@@ -65,6 +66,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 cours.classList.toggle('cours-selection');
                 cours.classList.toggle('cours-ferme');
 
+                // Augmenter le z-index de la div "background-click" pour fermer les sections en cliquant n'importe où
+                if(cours.classList.contains('cours-selection')) {
+                    backgroundClick.classList.add('index-plus');
+                } else {
+                    backgroundClick.classList.remove('index-plus');
+                }
+
                 // Appeler l'animation d'affichage
                 textesCours.forEach(function (texteCours) {
                     if(texteCours.classList.contains('agrandissement')) {
@@ -83,6 +91,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Fermer les sections en cliquant n'importe où
+    sessionCours.forEach(function (cours) {
+        backgroundClick.addEventListener('mousedown', function (){
+            if(cours.classList.contains('cours-selection')) {
+                backgroundClick.classList.add('index-plus');
+            } else {
+                backgroundClick.classList.remove('index-plus');
+            }
+
+            sessionCours.forEach(function (cours) {
+                cours.classList.add('cours-ferme');
+                cours.classList.remove('cours-selection');
+            });
+        });
+    });
 
     // FONCTIONS
     // Fonction pour enlever la classe 'selection' des boutons sessions non séléctionné

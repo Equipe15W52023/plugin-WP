@@ -21,6 +21,7 @@ function mon_plugin_shortcode() {
     $shortcode_content .= '</div>';
 
     // Ajoutez une div pour le contenu des sessions
+    $shortcode_content .= '<div class="background-click"></div>';
     $shortcode_content .= '<div class="sessions-container">';
     
     foreach ($sessions as $session) {
